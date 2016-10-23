@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import {
+  View,
   StyleSheet,
   Text
 } from 'react-native';
@@ -11,11 +12,11 @@ class Main extends React.Component {
   }
 
   render() {
-    const {value} = this.props;
+    const {reducer} = this.props;
     return (
       <View style={styles.container}>
         <Text onPress={() => this.onPressRedux()}>
-          {value + '\n\n'}
+          {reducer.value + '\n\n'}
         </Text>
       </View>
     );

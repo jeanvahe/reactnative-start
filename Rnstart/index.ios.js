@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
 import Root from './app/root';
 
-AppRegistry.registerComponent('rnstart', () => Root);
+AppRegistry.registerComponent('Rnstart', () => Root);

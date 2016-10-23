@@ -16,9 +16,9 @@ class MainContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { value } = state;
+  const { reducer } = state;
   return {
-    value 
+    reducer 
   };
 };
 
