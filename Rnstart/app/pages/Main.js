@@ -6,6 +6,15 @@ import {
 } from 'react-native';
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onIconClicked = this.onIconClicked.bind(this);
+  }
+
+  onIconClicked() {
+    console.log("Icon clicked");
+  }
+
   onPressRedux() {
     const {actions} = this.props;
     actions.onIncrement();
@@ -15,6 +24,12 @@ class Main extends React.Component {
     const {reducer} = this.props;
     return (
       <View style={styles.container}>
+        <ReadingToolbar
+          title="Main"
+          navigator={navigator}
+          onIconClicked={this.onIconClicked}
+          navIconName="md-menu"
+        />
         <Text onPress={() => this.onPressRedux()}>
           {reducer.value + '\n\n'}
         </Text>

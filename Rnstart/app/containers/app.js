@@ -7,7 +7,7 @@ import {
   View
 } from 'react-native';
 
-import MainContainer from './MainContainer';
+import Splash from '../pages/Splash';
 
 class App extends React.Component {
   static configureScene() {
@@ -38,8 +38,8 @@ class App extends React.Component {
           configureScene={this.configureScene}
           renderScene={this.renderScene}
           initialRoute={{
-            component: MainContainer,
-            name: 'Main'
+            component: Splash,
+            name: 'Splash'
           }}
         />
       </View>
