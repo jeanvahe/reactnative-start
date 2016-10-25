@@ -1,7 +1,10 @@
 # reactnative-start
 
 a startup of React Native
-list of used libs:
+list of used external libs:
+react-native-vector-icons (rnpm link)
+react-native-tab-navigator
+react-native-scrollable-tab-view
 
 ## Development Workflow
 

@@ -5,10 +5,18 @@ import {
   Text
 } from 'react-native';
 
+import TopToolbar from '../components/TopToolbar';
+import TabNavigator from 'react-native-tab-navigator';
+import Icon from 'react-native-vector-icons/Ionicons';
+import ScrollableTabView,{DefaultTabBar} from 'react-native-scrollable-tab-view';
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.onIconClicked = this.onIconClicked.bind(this);
+    this.state = {
+      selectedTab:'home'
+    };
   }
 
   onIconClicked() {
@@ -24,15 +32,39 @@ class Main extends React.Component {
     const {reducer} = this.props;
     return (
       <View style={styles.container}>
-        <ReadingToolbar
+        <TopToolbar
           title="Main"
           navigator={navigator}
           onIconClicked={this.onIconClicked}
           navIconName="md-menu"
         />
         <Text onPress={() => this.onPressRedux()}>
-          {reducer.value + '\n\n'}
+          {reducer.value + '\n'}
         </Text>
+        <TabNavigator>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'home'}
+            title="Home"
+            selectedTitleStyle={styles.selectedTextStyle}
+            titleStyle={styles.textStyle}
+            renderIcon={() => <Icon name={ 'ios-home' } size={26} color={'gray'}/>}
+            renderSelectedIcon={() => <Icon name={ 'ios-home' } size={26} color={'#4E78E7'}/>}
+            badgeText="1"
+            onPress={() => this.setState({ selectedTab: 'home' })}>
+              <Home {...this.props} />
+          </TabNavigator.Item>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'more'}
+            title="More"
+            selectedTitleStyle={styles.selectedTextStyle}
+            titleStyle={styles.textStyle}
+            renderIcon={() => <Icon name={ 'ios-more' } size={26} color={'gray'}/>}
+            renderSelectedIcon={() => <Icon name={ 'ios-more' } size={26} color={'#4E78E7'}/>}
+            renderBadge={() => <CustomBadgeView />}
+            onPress={() => this.setState({ selectedTab: 'more' })}>
+              <View />
+          </TabNavigator.Item>
+        </TabNavigator>
       </View>
     );
   }
@@ -43,5 +75,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#FFF'
   },
+  textStyle:{
+    color:'#999',
+  },
+  selectedTextStyle:{
+    color:'black',
+  }
 });
 export default Main;
