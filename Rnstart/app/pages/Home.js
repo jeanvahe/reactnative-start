@@ -27,8 +27,8 @@ class Home extends React.Component {
       tabBarUnderlineStyle={styles.tabBarUnderline}
       tabBarActiveTextColor="#3e9ce9"
       tabBarInactiveTextColor="#aaaaaa"
-      <ProductList tabLabel='ProductList' />
-      <ProductDetails tabLabel='ProductDetails'/>
+      <ProductList {...this.props} tabLabel='ProductList' />
+      <ProductDetails {...this.props} tabLabel='ProductDetails'/>
     </ScrollableTabView>
   }
 }
