@@ -4,14 +4,17 @@ import {
   StyleSheet,
   RefreshControl,
   ListView,
+  TouchableOpacity,
   RecyclerViewBackedScrollView,
   Text
 } from 'react-native';
 
+import ProductEdit from './ProductEdit';
+
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
-    let dataSource: new ListView.DataSource({
+    let dataSource = new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
     });
     this.state = {
@@ -24,6 +27,9 @@ class ProductList extends React.Component {
   _onRefresh() {
     this.setState({refreshing: true}); 
     // do some data requesting
+    this.timer = setTimeout(() => {
+      this.setState({refreshing: false});
+    }, 1000);
   }
 
   _onPress(article) {
@@ -36,20 +42,22 @@ class ProductList extends React.Component {
   }
 
   renderItem(article) {
-    <TouchableOpacity onPress={() => this._onPress(article)}>
-      <View style={styles.containerItem}>
-        <Text>
-           {article.title}
-        </Text>
-      </View>
-    </TouchableOpacity>
+    return (
+      <TouchableOpacity onPress={() => this._onPress(article)}>
+        <View style={styles.containerItem}>
+          <Text>
+             {article.title}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
   }
 
   render() {
     return (
       <ListView
         initialListSize={1}
-        dataSource={dataSource}
+        dataSource={this.state.dataSource}
         renderRow={this.renderItem}
         style={styles.listView}
         renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}

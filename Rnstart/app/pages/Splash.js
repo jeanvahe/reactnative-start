@@ -28,7 +28,6 @@ class Splash extends React.Component {
           component: MainContainer,
           name: 'Main'
         });
-      });
     }, 1000);
   }
 

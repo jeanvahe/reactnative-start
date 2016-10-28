@@ -16,7 +16,7 @@ class ProductEdit extends React.Component {
       <View style={styles.container}>
         <TopToolbar
           title="Main"
-          navigator={navigator}
+          navigator={this.props.navigator}
         />
       </View>
      )
