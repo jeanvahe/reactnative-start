@@ -28,11 +28,19 @@ class ProductList extends React.Component {
 
   _onPress(article) {
      const { navigator } = this.props;
+     if (article.title === '1') {
        navigator.push({
-         component: ProductEdit,
-         name: 'ProductEdit',
+         component: ProductFeedback,
+         name: 'ProductFeedback',
          article
        });
+     } else if (article.title === '2') {
+       navigator.push({
+         component: ProductMessage,
+         name: 'ProductMessage',
+         article
+       });
+     }
   }
 
   renderItem(article) {
