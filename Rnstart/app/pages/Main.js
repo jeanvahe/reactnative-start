@@ -9,6 +9,7 @@ import TopToolbar from '../components/TopToolbar';
 import TabNavigator from 'react-native-tab-navigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView,{DefaultTabBar} from 'react-native-scrollable-tab-view';
+import Home from './Home';
 
 class Main extends React.Component {
   constructor(props) {
@@ -60,7 +61,6 @@ class Main extends React.Component {
             titleStyle={styles.textStyle}
             renderIcon={() => <Icon name={ 'ios-more' } size={26} color={'gray'}/>}
             renderSelectedIcon={() => <Icon name={ 'ios-more' } size={26} color={'#4E78E7'}/>}
-            renderBadge={() => <CustomBadgeView />}
             onPress={() => this.setState({ selectedTab: 'more' })}>
               <View />
           </TabNavigator.Item>

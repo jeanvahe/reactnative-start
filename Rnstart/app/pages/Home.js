@@ -16,20 +16,22 @@ class Home extends React.Component {
   }
 
   render() {
-    <ScrollableTabView
-      renderTabBar={() =>
-        <DefaultTabBar
-          tabStyle={styles.tab}
-          textStyle={styles.tabText}
-        />
-      }
-      tabBarBackgroundColor="#fcfcfc"
-      tabBarUnderlineStyle={styles.tabBarUnderline}
-      tabBarActiveTextColor="#3e9ce9"
-      tabBarInactiveTextColor="#aaaaaa"
-      <ProductList {...this.props} tabLabel='ProductList' />
-      <ProductDetails {...this.props} tabLabel='ProductDetails'/>
-    </ScrollableTabView>
+    return (
+      <ScrollableTabView
+        renderTabBar={() =>
+          <DefaultTabBar
+            tabStyle={styles.tab}
+            textStyle={styles.tabText}
+          />
+        }
+        tabBarBackgroundColor="#fcfcfc"
+        tabBarUnderlineStyle={styles.tabBarUnderline}
+        tabBarActiveTextColor="#3e9ce9"
+        tabBarInactiveTextColor="#aaaaaa">
+        <ProductList {...this.props} tabLabel='ProductList' />
+        <ProductDetails {...this.props} tabLabel='ProductDetails'/>
+      </ScrollableTabView>
+    );
   }
 }
 
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
   },
   tabText: {
     fontSize: 16
-  }
+  },
   tabBarUnderline: {
     backgroundColor: '#3e9ce9',
     height: 2
