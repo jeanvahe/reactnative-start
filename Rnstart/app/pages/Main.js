@@ -9,6 +9,7 @@ import TopToolbar from '../components/TopToolbar';
 import TabNavigator from 'react-native-tab-navigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView,{DefaultTabBar} from 'react-native-scrollable-tab-view';
+import Storage from '../utils/Storage';
 import Home from './Home';
 
 class Main extends React.Component {
@@ -22,6 +23,7 @@ class Main extends React.Component {
 
   onIconClicked() {
     console.log("Icon clicked");
+    Storage.save('openTimes', route.isFirst + 1);
   }
 
   onPressRedux() {
@@ -30,7 +32,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const {reducer} = this.props;
+    const {navigator, route, reducer} = this.props;
     return (
       <View style={styles.container}>
         <TopToolbar
@@ -41,6 +43,7 @@ class Main extends React.Component {
         />
         <Text onPress={() => this.onPressRedux()}>
           {reducer.value + '\n'}
+          {route.isFirst + '\n'}
         </Text>
         <TabNavigator>
           <TabNavigator.Item

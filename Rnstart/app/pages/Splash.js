@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 
 import MainContainer from '../containers/MainContainer';
+import Storage from '../utils/Storage';
 
 const maxHeight = Dimensions.get('window').height;
 const maxWidth = Dimensions.get('window').width;
@@ -24,10 +25,21 @@ class Splash extends React.Component {
     ).start();
     this.timer = setTimeout(() => {
       const { navigator } = this.props;
-        navigator.resetTo({
-          component: MainContainer,
-          name: 'Main'
-        });
+      Storage.get('openTimes')
+      .then((openTimes) => {
+        if (!openTimes) {
+          navigator.resetTo({
+            component: MainContainer,
+            name: 'Main',
+            isFirst: 0
+        } else {
+          navigator.resetTo({
+            component: MainContainer,
+            name: 'Main',
+            isFirst: openTimes
+          });
+        }
+      });
     }, 1000);
   }
 
