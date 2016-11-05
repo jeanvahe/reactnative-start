@@ -32,6 +32,7 @@ class Splash extends React.Component {
             component: MainContainer,
             name: 'Main',
             isFirst: 0
+          });
         } else {
           navigator.resetTo({
             component: MainContainer,

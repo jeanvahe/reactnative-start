@@ -10,8 +10,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { naviGoBack } from '../utils/CommonUtil';
 import Button from './Button';
 
-let showActionButton = false;
-
 const propTypes = {
   title: PropTypes.string,
   navigator: PropTypes.object,
@@ -19,27 +17,26 @@ const propTypes = {
   navIconName: PropTypes.string
 };
 
-const TopToolbar = ({
-  title,
-  navigator,
-  onIconClicked,
-  navIconName
-}) => {
-  const handleIconClicked = () => {
-    if (onIconClicked) {
-      onIconClicked();
-    } else if (navigator) {
-      naviGoBack(navigator);
-    }
-  };
+class TopToolbarDock extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  const renderToolbarIOS = () => {
+  handleIconClicked() {
+    if (this.props.onIconClicked) {
+      this.props.onIconClicked();
+    } else if (this.props.navigator) {
+      naviGoBack(this.props.navigator);
+    }
+  }
+
+  render() {
     return (
       <View style={styles.toolbar}>
         <Icon.Button
-          name={navIconName === undefined ? 'ios-arrow-back' : navIconName}
+          name={this.props.navIconName === undefined ? 'ios-arrow-back' : this.props.navIconName}
           iconStyle={styles.leftIOS}
-          onPress={handleIconClicked}
+          onPress={this.handleIconClicked.bind(this)}
           backgroundColor="transparent"
           underlayColor="transparent"
           activeOpacity={0.8}
@@ -47,19 +44,12 @@ const TopToolbar = ({
         <Text
           style={[styles.titleIOS,{ paddingLeft: 0 }]}
         >
-          {title}
+          {this.props.title}
         </Text>
         {this.props.children}
       </View>
     );
-  };
-
-  const Toolbar = Platform.select({
-    android: () => renderToolbarIOS(),
-    ios: () => renderToolbarIOS()
-  });
-
-  return <Toolbar />;
+  }
 };
 
 const styles = StyleSheet.create({
@@ -95,10 +85,10 @@ const styles = StyleSheet.create({
   }
 });
 
-TopToolbar.propTypes = propTypes;
+TopToolbarDock.propTypes = propTypes;
 
-TopToolbar.defaultProps = {
+TopToolbarDock.defaultProps = {
   title: '',
 };
 
-export default TopToolbar;
+export default TopToolbarDock;

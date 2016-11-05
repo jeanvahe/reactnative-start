@@ -23,7 +23,7 @@ class Main extends React.Component {
 
   onIconClicked() {
     console.log("Icon clicked");
-    Storage.save('openTimes', route.isFirst + 1);
+    Storage.save('openTimes', this.props.route.isFirst + 1);
   }
 
   onPressRedux() {

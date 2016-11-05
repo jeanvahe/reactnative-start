@@ -9,7 +9,8 @@ import {
   Text
 } from 'react-native';
 
-import ProductEdit from './ProductEdit';
+import ProductFeedback from './ProductFeedback';
+import ProductMessage from './ProductMessage';
 
 class ProductList extends React.Component {
   constructor(props) {
