@@ -20,7 +20,7 @@ class ProductMessage extends React.Component {
     super(props);
   }
 
-  _handleOnSelect (value) {
+  onHandleSelect (value) {
     console.log(value);
   }
 
@@ -39,14 +39,14 @@ class ProductMessage extends React.Component {
             backgroundColor="transparent"
             underlayColor="transparent"
             activeOpacity={0.8}
-            onPress={()=>this._handleOnSelect(1)}
+            onPress={()=>this.onHandleSelect(1)}
           /> 
           <MenuButton  
             buttonStyle={[styles.rightIOS]} 
             button={<Icon name={ 'ios-home' } size={26} color={'gray'}/> }
             optionsStyle={{top:58, width: 150}}
             menuGroup={menuGroup}
-            onSelect={()=>this._handleOnSelect(2)} 
+            onSelect={()=>this.onHandleSelect(2)} 
             optionStyle={styles.menuOption}
             optionTextStyle={styles.menuText}
             optionImageStyle={styles.menuImage}

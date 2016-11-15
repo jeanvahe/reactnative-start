@@ -38,6 +38,8 @@ class ProductFeedback extends React.Component {
         <TopToolbar
           title="Main"
           navigator={navigator}
+          onActionSelected={this.onActionSelected}
+          actions={toolbarActions}  
         />
         <TextInput
           style={styles.textInput}
